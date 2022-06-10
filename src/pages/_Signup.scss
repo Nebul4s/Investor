@@ -1,0 +1,76 @@
+.Signup {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  .bg-img {
+    filter: blur(6px) brightness(0.8);
+    border: none;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: scale(1.1);
+  }
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: black;
+    width: 30%;
+    margin: auto;
+
+    height: fit-content;
+    border-radius: 0.8rem;
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 9.6rem;
+    font-size: 2.8rem;
+    margin-bottom: 3.6rem;
+    border-bottom: 1px solid #333;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4rem;
+    label {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      span {
+        margin-bottom: 0.8rem;
+        strong {
+          color: red;
+        }
+      }
+    }
+    input {
+      font-size: 2.4rem;
+      padding: 1.2rem;
+      border-radius: 0.8rem;
+    }
+    button {
+      margin-top: 4.8rem;
+      color: black;
+      width: 90%;
+      font-size: 2.4rem;
+      padding: 1.2rem;
+      margin-bottom: 3.6rem;
+      border-radius: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        background-color: #333;
+        color: white;
+      }
+    }
+  }
+}

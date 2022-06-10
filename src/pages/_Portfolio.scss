@@ -1,0 +1,53 @@
+.Portfolio {
+  height: 100%;
+  background-color: black;
+  position: relative;
+  button {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .ShowPortfolio {
+    height: 100%;
+    display: flex;
+    gap: 2.4rem;
+  }
+  .graph-container {
+    padding: 2.4rem;
+    height: 100%;
+    width: 75%;
+    .title {
+      display: flex;
+      justify-content: space-between;
+    }
+    .lists {
+      width: 50%;
+      display: flex;
+      gap: 1.2rem;
+
+      ul {
+        flex: 0.5;
+        list-style: none;
+        li {
+          display: flex;
+          justify-content: space-between;
+
+          padding: 2rem;
+          border: none;
+          border-bottom: 1px solid #333;
+          cursor: default;
+          transition: all 0.2;
+          &:hover {
+            background-color: #333;
+          }
+        }
+      }
+    }
+  }
+  .linegraph {
+    overflow: hidden;
+  }
+  .PreviewBriefcase {
+    width: 25%;
+  }
+}

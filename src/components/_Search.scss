@@ -1,0 +1,53 @@
+.Search {
+  height: 100%;
+  img {
+    width: 3.6rem;
+    height: 3.6rem;
+    color: white;
+  }
+
+  .input-group {
+    height: 100%;
+    background-color: white;
+    border-radius: 0.5rem;
+
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    background: transparent;
+    padding: 0.25rem;
+    border: 0;
+    flex: 1 1 auto;
+
+    width: 100%;
+    font-size: 2rem;
+    padding-left: 3.2rem;
+    border: none;
+    border-radius: 0.5rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  button {
+    background-color: #333;
+    height: 100%;
+    width: 50%;
+    border: none;
+    border-radius: 0.5rem;
+
+    font-size: 2rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 1s;
+  }
+}

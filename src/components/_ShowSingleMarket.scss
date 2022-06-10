@@ -1,0 +1,89 @@
+.ShowSingleMarket {
+  padding: 2.4rem;
+  flex: 0.75;
+
+  background-color: black;
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      margin-bottom: 1.8rem;
+    }
+    border-bottom: 1px solid #333;
+  }
+  .times {
+    background-color: #222;
+    font-size: 2.4rem;
+    padding: 1.2rem;
+    margin-bottom: 2.4rem;
+
+    display: flex;
+    gap: 1.2rem;
+
+    width: fit-content;
+    span {
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        color: green;
+      }
+    }
+    .active {
+      border-bottom: 1px solid green;
+    }
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    .lists {
+      width: 50%;
+      display: flex;
+      gap: 1.2rem;
+
+      ul {
+        flex: 0.5;
+        li {
+          border: none;
+          cursor: default;
+        }
+      }
+    }
+    form {
+      width: 25%;
+      background-color: #333;
+      border-radius: 0.4rem;
+      padding: 1.8rem;
+      label {
+        display: flex;
+        flex-direction: column;
+        input {
+          font-size: 2.4rem;
+        }
+        margin-bottom: 1.8rem;
+      }
+      .buttons {
+        display: flex;
+        gap: 1.2rem;
+        button {
+          width: 100%;
+          font-size: 2.4rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2;
+          &:hover {
+            box-shadow: 1px 1px 4px 1px rgba($color: #000000, $alpha: 0.5);
+            transform: translateY(-1px);
+          }
+        }
+        .buy {
+          background-color: green;
+        }
+        .sell {
+          background-color: red;
+        }
+      }
+    }
+  }
+}

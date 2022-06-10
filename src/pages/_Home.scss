@@ -1,0 +1,9 @@
+.container {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  background-color: #000;
+  position: relative;
+}

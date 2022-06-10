@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  font-family: "Open Sans", sans-serif;
+}
+body {
+  font-size: 1.8rem;
+}
+
+@import "./App";
+@import "./pages/Home";
+@import "./pages/Portfolio";
+@import "./pages/Login";
+@import "./pages/Signup";
+@import "./pages/Logout";
+
+@import "./components/PreviewBriefcase";
+@import "./components/PreviewMarkets";
+@import "./components/ShowSingleMarket";
+@import "./components/NavBar";
+@import "./components/Search";
+@import "./components/LineGraph";
+@import "./components/ActionHistory";

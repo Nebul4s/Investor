@@ -1,0 +1,75 @@
+.NavBar {
+  background-color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  height: 7%;
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-left: 4.8rem;
+    width: 9.6rem;
+  }
+  .header__search {
+    display: flex;
+    align-items: center;
+    padding: 2.4rem;
+  }
+  .header__searchContainer {
+    border: 1px solid #31363a;
+    border-radius: 0.4rem;
+    width: 37.5rem;
+    input {
+      padding: 0.8rem;
+      font-size: 2rem;
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      color: white;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .header__menuItems {
+    display: flex;
+    align-items: center;
+    margin-right: 1.8rem;
+    gap: 1.2rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    button {
+      font-size: 1.8rem;
+      background: none;
+      border-left: 1px solid #555;
+      border-right: 1px solid #555;
+      color: #fff;
+
+      padding: 30rem 1.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        background-color: #fff;
+        color: #222;
+        border-left: 1px solid #222;
+        border-right: 1px solid #222;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 0.8rem;
+      transition: all 0.2s;
+      &:active,
+      &:hover {
+        color: #5ac53b;
+      }
+    }
+  }
+}

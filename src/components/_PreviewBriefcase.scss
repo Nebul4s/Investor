@@ -1,0 +1,48 @@
+.PreviewBriefcase {
+  background-color: #222;
+
+  ul {
+    list-style: none;
+
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #424;
+      cursor: pointer;
+
+      transition: all 0.2s;
+      .text {
+        display: flex;
+        flex-direction: column;
+        flex: 0.34;
+        h2 {
+          font-size: 2.4rem;
+        }
+      }
+      img {
+        height: 3.6rem;
+        flex: 0.33;
+      }
+      .price {
+        display: flex;
+        flex-direction: column;
+        font-size: 2.4rem;
+        align-items: flex-end;
+        flex: 0.33;
+        .percent {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.521);
+        }
+      }
+      &:hover {
+        background-color: #444;
+      }
+    }
+    .active {
+      background-color: #444;
+    }
+  }
+}

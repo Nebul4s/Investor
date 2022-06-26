@@ -1,20 +1,33 @@
 import { useFetch } from "../hooks/useFetch";
+import { useFirestore } from "../hooks/useFirestore";
 import { useState, useEffect } from "react";
 
 //components
 import ShowSingleMarket from "./ShowSingleMarket";
+import Placeholder from "./StartingMsg";
 
 //svgs
 import stockSVG from "../assets/stock.svg";
 import trendingUp from "../assets/trending_up.svg";
 import trendingDown from "../assets/trending_down.svg";
 
-const PreviewMarkets = ({ uid }) => {
+const PreviewMarkets = ({ uid, myStocks }) => {
   const [singleMarket, setSingleMarket] = useState(null);
   const [marketElement, setMarketElement] = useState("");
   const [url, setUrl] = useState("");
 
   const { data, error } = useFetch(url);
+  const formatData = [];
+
+  Object.values(data).forEach((stock) => {
+    formatData.push(stock);
+  });
+
+  const { updateDocumentPrices } = useFirestore("stocks");
+  const { updateStocksValue } = useFirestore("users");
+
+  uid && updateDocumentPrices(uid, formatData, myStocks);
+  myStocks && updateStocksValue(myStocks, uid);
 
   if (error) {
     console.log(error);
@@ -33,12 +46,6 @@ const PreviewMarkets = ({ uid }) => {
     setUrl(`/quote?symbol=${symbolList}`);
   }, []);
 
-  const formatData = [];
-
-  Object.values(data).forEach((stock) => {
-    formatData.push(stock);
-  });
-
   const handleMarket = (e, stock) => {
     //Styles
     if (marketElement && marketElement.classList.contains("active")) {
@@ -54,7 +61,7 @@ const PreviewMarkets = ({ uid }) => {
 
   return (
     <div className="PreviewMarkets">
-      <ul>
+      <ul className="markets">
         {error && <li>{error.message}</li>}
         {data &&
           formatData.map((stock) => (
@@ -71,9 +78,11 @@ const PreviewMarkets = ({ uid }) => {
                 style={{ width: "10px", height: "10px" }}
                 stock={stock}
               /> */}
-              <img src={stockSVG} alt="Stock img" />
+              <img className="stockSVG" src={stockSVG} alt="Stock img" />
               <div className="price">
-                <span>${Number(stock.open).toFixed(2)}</span>
+                <span className="stock-price">
+                  ${Number(stock.close).toFixed(2)}
+                </span>
                 <span
                   className="percent"
                   style={{
@@ -88,6 +97,7 @@ const PreviewMarkets = ({ uid }) => {
                   {Number(stock.percent_change).toFixed(2)}%
                 </span>
                 <img
+                  className="trendingIMG"
                   src={
                     Number(stock.percent_change) > 0 ? trendingUp : trendingDown
                   }
@@ -102,7 +112,8 @@ const PreviewMarkets = ({ uid }) => {
             </li>
           ))}
       </ul>
-      <ShowSingleMarket stock={singleMarket} uid={uid} />
+      {uid && <ShowSingleMarket stock={singleMarket} uid={uid} />}
+      {!uid && <Placeholder />}
     </div>
   );
 };

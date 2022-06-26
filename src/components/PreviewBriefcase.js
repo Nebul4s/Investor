@@ -8,21 +8,9 @@ const PreviewBriefcase = ({ myStocks, error }) => {
     console.log(e, item);
   };
 
-  if (myStocks && myStocks.length !== 0) {
-    console.log(myStocks);
-    let initialValue = 0;
-    const newSTocks = myStocks.filter((item) => item.symbol === "SHOP");
-    const realAmount = newSTocks.reduce(
-      (acc, cur) => acc + cur.amount,
-      initialValue
-    );
-    const testObject = {
-      ...(newSTocks[0].amount = realAmount),
-      ...newSTocks[0],
-    };
-    console.log(testObject);
-    console.log(realAmount);
-  }
+  const checkAmount = (e, item) => {
+    console.log(e, item);
+  };
 
   return (
     <div className="PreviewBriefcase">
@@ -39,11 +27,15 @@ const PreviewBriefcase = ({ myStocks, error }) => {
               <div className="text">
                 <h2>{item.name}</h2>
                 <span>{item.symbol}</span>
-                <span>Amount owned: {item.amount}</span>
+                <span onChange={(e) => checkAmount(e, item)}>
+                  Amount owned: {item.amount}
+                </span>
               </div>
-              <img src={stockSVG} alt="item img" />
+              <img className="stockSVG" src={stockSVG} alt="item img" />
               <div className="price">
-                <span>${Number(item.open).toFixed(2)}</span>
+                <span className="stock-price">
+                  ${Number(item.close).toFixed(2)}
+                </span>
                 <span
                   className="percent"
                   style={{
@@ -58,6 +50,7 @@ const PreviewBriefcase = ({ myStocks, error }) => {
                   {Number(item.percent_change).toFixed(2)}%
                 </span>
                 <img
+                  className="trendingIMG"
                   src={
                     Number(item.percent_change) > 0 ? trendingUp : trendingDown
                   }
@@ -71,7 +64,6 @@ const PreviewBriefcase = ({ myStocks, error }) => {
               </div>
             </li>
           ))}
-        {/* Create state that holds users bought assets and map through them here */}
       </ul>
     </div>
   );

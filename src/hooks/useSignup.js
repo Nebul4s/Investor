@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { projectAuth } from "../firebase/config";
+import { projectAuth, projectFirestore } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
@@ -22,15 +22,15 @@ export const useSignup = () => {
       if (!res) {
         throw new Error("Could not complete signup");
       }
+
+      projectFirestore.collection("users").doc(res.user.uid).set({
+        balance: 20000,
+        totalValue: 0,
+        stocksValue: 0,
+        uid: res.user.uid,
+        portfolioHistory: [],
+      });
       await res.user.updateProfile({ displayName });
-
-      //create a user document
-      //   await projectFirestore.collection("users").doc(res.user.uid).set({
-      //     online: true,
-      //     displayName,
-      //   });
-
-      // dispatch login action
       dispatch({ type: "LOGIN", payload: res.user });
 
       if (!isCancelled) {

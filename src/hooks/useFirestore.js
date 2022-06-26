@@ -63,6 +63,116 @@ export const useFirestore = (collection) => {
     }
   };
 
+  // update shares, if no shares add new document
+  const updateDocument = async (stock, user, action, amount) => {
+    try {
+      const query = await ref
+        .where("symbol", "==", stock.symbol)
+        .where("uid", "==", user.uid)
+        .get();
+
+      if (!query.empty) {
+        query.forEach((doc) => {
+          if (action === "buy") {
+            ref.doc(doc.id).update({
+              amount: (doc.data().amount += amount),
+            });
+          }
+          if (action === "sell") {
+            ref.doc(doc.id).update({
+              amount: (doc.data().amount -= amount),
+            });
+          }
+        });
+      } else {
+        addDocument({ uid: user.uid, amount, ...stock });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //update the price of all stocks that you own
+  const updateDocumentPrices = async (uid, stocks) => {
+    try {
+      const query = await ref.where("uid", "==", uid).get();
+      console.log(query);
+      console.log("docs running");
+
+      if (query.empty) return;
+
+      query.forEach((doc) => {
+        stocks.map((item) => {
+          if (doc.data().symbol === item.symbol) {
+            ref.doc(doc.id).update({
+              close: item.close,
+            });
+          }
+        });
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateBalance = async (stock, user, action, amount) => {
+    try {
+      const price = Number(stock.close * amount);
+
+      const query = await ref.where("uid", "==", user.uid).get();
+      if (query.empty) return;
+
+      query.forEach((doc) => {
+        if (action === "buy") {
+          ref.doc(doc.id).update({
+            balance: (doc.data().balance -= price),
+            stocksValue: (doc.data().stocksValue += price),
+            totalValue: (doc.data().balance += doc.data().stocksValue),
+          });
+        }
+        if (action === "sell") {
+          ref.doc(doc.id).update({
+            balance: (doc.data().balance += price),
+            stocksValue: (doc.data().stocksValue -= price),
+            totalValue: (doc.data().balance += doc.data().stocksValue),
+          });
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //update total stocksvalue and totalvalue of users portfolio
+  const updateStocksValue = async (myStocks, uid) => {
+    if (!myStocks) return;
+
+    const query = await ref.where("uid", "==", uid).get();
+
+    const currentDate = new Date();
+    const value = myStocks.reduce((acc, cur) => {
+      return acc + cur.close * cur.amount;
+    }, 0);
+
+    console.log(value);
+
+    if (!query.empty) {
+      query.forEach((doc) => {
+        ref.doc(doc.id).update({
+          stocksValue: value,
+          totalValue: (doc.data().balance += doc.data().stocksValue),
+          portfolioHistory: [
+            ...doc.data().portfolioHistory,
+            {
+              x: currentDate,
+              y: (doc.data().balance += doc.data().stocksValue),
+            },
+          ],
+        });
+      });
+    }
+  };
+
   // delete a document
   const deleteDocument = async (id) => {
     dispatch({ type: "IS_PENDING" });
@@ -79,5 +189,13 @@ export const useFirestore = (collection) => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addDocument, deleteDocument, response };
+  return {
+    updateStocksValue,
+    updateDocumentPrices,
+    updateBalance,
+    updateDocument,
+    addDocument,
+    deleteDocument,
+    response,
+  };
 };

@@ -1,3 +1,5 @@
+@import "../Mixins";
+
 .container {
   height: 100%;
   width: 100%;
@@ -6,4 +8,171 @@
   grid-template-columns: 8fr 2fr;
   background-color: #000;
   position: relative;
+}
+@media (max-width: 1700px) {
+  .container {
+    ul {
+      .text {
+        h2 {
+          font-size: 2rem !important;
+        }
+        font-size: 1.2rem;
+      }
+      .price {
+        .stock-price {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1400px) {
+  .container {
+    .ShowSingleMarket {
+      .lists {
+        width: 70% !important;
+      }
+    }
+    ul {
+      .text {
+        h2 {
+          font-size: 2rem !important;
+        }
+        font-size: 1.2rem;
+      }
+      .price {
+        .stock-price {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1150px) {
+  .container {
+    .ShowSingleMarket {
+      .lists {
+        gap: 0 !important;
+        li {
+          font-size: 1.4rem;
+        }
+      }
+
+      .buttons {
+        flex-direction: column;
+        gap: 0.6rem !important;
+      }
+    }
+    ul {
+      .text {
+        h2 {
+          font-size: 1.6rem !important;
+        }
+        font-size: 1rem;
+      }
+      .price {
+        .stock-price {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .container {
+    .PreviewBriefcase {
+      display: none;
+    }
+    .PreviewMarkets {
+      grid-column: 1 / 3;
+    }
+  }
+}
+@media (max-width: 830px) {
+  .container {
+    .ShowSingleMarket {
+      .title {
+        h1 {
+          font-size: 2.4rem;
+        }
+      }
+      .buying-power {
+        h2 {
+          font-size: 2.4rem;
+        }
+        span {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 730px) {
+  .container {
+    .ShowSingleMarket {
+      width: 70% !important;
+      padding-right: 0.8rem !important;
+      padding-left: 0.8rem !important;
+      label {
+        span {
+          font-size: 1.4rem;
+        }
+      }
+      .controls {
+        @include flexColumn;
+      }
+    }
+    ul {
+      width: 30% !important;
+      .text {
+        h2 {
+          font-size: 1.4rem !important;
+        }
+        font-size: 1rem;
+      }
+      .price {
+        .stock-price {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 630px) {
+  .container {
+    .info {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      .lists {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        width: 100% !important;
+      }
+      form {
+        grid-column: 1 /3;
+        grid-row: 2;
+        width: 100% !important;
+      }
+    }
+  }
+}
+@media (max-width: 460px) {
+  .container {
+    .info {
+      grid-template-rows: repeat(3, 1fr);
+      .lists {
+        flex-direction: column;
+        grid-row: 1 / 3;
+        width: 100% !important;
+        ul {
+          width: 100% !important;
+        }
+      }
+      form {
+        grid-row: 3;
+        width: 100% !important;
+      }
+    }
+  }
 }

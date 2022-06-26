@@ -1,14 +1,15 @@
 import { useAuthContext } from "../hooks/useAuthContext";
 import { NavLink } from "react-router-dom";
+import { useLogout } from "../hooks/useLogout";
 
 import Logo from "../assets/stock.svg";
 
 const NavBar = () => {
   const { user } = useAuthContext();
+  const { logout } = useLogout();
 
-  const handleLogout = () => {
-    window.location = "/logout";
-  };
+  const str = "abc efg";
+  const str2 = str;
 
   return (
     <div className="NavBar">
@@ -35,8 +36,12 @@ const NavBar = () => {
         )}
         {user && (
           <>
-            <p>Hi, {user.displayName}</p>
-            <button onClick={handleLogout}>Logout</button>
+            <p>
+              Hi,{" "}
+              {user.displayName.charAt(0).toUpperCase() +
+                user.displayName.slice(1)}
+            </p>
+            <button onClick={logout}>Logout</button>
           </>
         )}
       </div>

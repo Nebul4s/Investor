@@ -1,3 +1,5 @@
+@import "../Mixins";
+
 .Signup {
   width: 100%;
   height: 100%;
@@ -28,8 +30,7 @@
     border-radius: 0.8rem;
   }
   .title {
-    display: flex;
-    align-items: center;
+    @include flexCenter;
     justify-content: center;
     height: 9.6rem;
     font-size: 2.8rem;
@@ -37,9 +38,8 @@
     border-bottom: 1px solid #333;
   }
   form {
-    display: flex;
+    @include flexCenter;
     flex-direction: column;
-    align-items: center;
     gap: 2.4rem;
     label {
       display: flex;
@@ -71,6 +71,20 @@
         background-color: #333;
         color: white;
       }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .Signup {
+    .wrapper {
+      width: 50% !important;
+    }
+  }
+}
+@media (max-width: 580px) {
+  .Signup {
+    .wrapper {
+      width: 80% !important;
     }
   }
 }

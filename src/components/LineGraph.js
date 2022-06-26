@@ -2,15 +2,14 @@ import { Line } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 
-//the starting date must be the 1st item in the database for that spesific user and the data needs to be fetched accordingly
-
-const LineGraph = ({ stock, time, mockdata }) => {
+const LineGraph = ({ stock, portfolio, time }) => {
   const [graphData, setGraphData] = useState([]);
   const [url, setUrl] = useState(``);
 
   const { data } = useFetch(url);
 
   useEffect(() => {
+    //Dates that set the query to contain 2 year historical data on fetch
     const currentDate = new Date();
 
     const startingDate = [
@@ -25,8 +24,19 @@ const LineGraph = ({ stock, time, mockdata }) => {
       currentDate.getDate(),
     ];
 
-    if (mockdata) setGraphData(mockdata);
+    //Create graphdata for portfolio
+    if (portfolio && portfolio.length > 0) {
+      const portfolioData = [];
+      portfolio.forEach((item) => {
+        portfolioData.push({
+          x: new Date(item.x.seconds * 1000),
+          y: item.y.toString(),
+        });
+      });
+      setGraphData(portfolioData);
+    }
 
+    //If stock was chosen fetch data and re-render
     if (stock) {
       setUrl(
         `/time_series?start_date=${startingDate.join(
@@ -36,15 +46,17 @@ const LineGraph = ({ stock, time, mockdata }) => {
         }&interval=1day&outputsize=730`
       );
     }
+
     const createGraphData = () => {
       let tempData = [];
 
       if (data.values.length !== 0)
         data.values.map((stock) => {
-          return tempData.push({ x: new Date(stock.datetime), y: stock.open });
+          return tempData.push({ x: new Date(stock.datetime), y: stock.close });
         });
 
       if (tempData.length !== 0 || null || undefined) {
+        //Helpers
         let finalData = [];
 
         let week = Math.trunc(currentDate - 1000 * 60 * 60 * 24 * 7);
@@ -52,6 +64,7 @@ const LineGraph = ({ stock, time, mockdata }) => {
         let year = Math.trunc(currentDate - 1000 * 60 * 60 * 24 * 7 * 4 * 12);
 
         tempData.forEach((item) => {
+          //Foreach loop, check chosen time and compare item dates to helpers above
           if (time === "1WK" && +item.x >= week) {
             finalData.push(item);
             setGraphData(finalData);
@@ -72,11 +85,54 @@ const LineGraph = ({ stock, time, mockdata }) => {
     if (!data || data.code === 400) return;
 
     createGraphData();
-  }, [mockdata, stock, data, time]);
+  }, [stock, data, time, portfolio]);
 
   return (
     <div className="linegraph">
       {stock && (
+        <Line
+          data={{
+            datasets: [
+              {
+                type: "line",
+                backgroundColor: "black",
+                borderColor: "#5AC53B",
+                borderWidth: 2,
+                pointBorderColor: "rgba(0, 0, 0, 0)",
+                pointBackgroundColor: "rgba(0, 0, 0, 0)",
+                pointHoverBackgroundColor: "#5AC53B",
+                pointHoverBorderColor: "#000000",
+                pointHoverBorderWidth: 4,
+                pointHoverRadius: 6,
+                data: graphData,
+              },
+            ],
+          }}
+          options={{
+            maintainAspectRatio: false,
+            legend: {
+              display: false,
+            },
+            tooltips: {
+              mode: "index",
+              intersect: false,
+            },
+            scales: {
+              xAxes: [
+                {
+                  type: "time",
+                  distribution: "linear",
+                  time: {
+                    unit: "day",
+                    parser: "YY/MM/DD",
+                  },
+                },
+              ],
+            },
+          }}
+        />
+      )}
+      {portfolio && (
         <Line
           data={{
             datasets: [

@@ -1,56 +1,91 @@
-import { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCollection } from "../hooks/useCollection";
 
 import LineGraph from "../components/LineGraph";
 import PreviewBriefcase from "../components/PreviewBriefcase";
-import ActionHistory from "../components/ActionHistory";
 
 const Portfolio = () => {
-  const [show, setShow] = useState(false);
   const { user } = useAuthContext();
   const { documents, error } = useCollection("stocks", ["uid", "==", user.uid]);
+  const { balance } = useCollection("users", ["uid", "==", user.uid]);
+
+  const totalAmountOfStocks =
+    documents &&
+    documents.reduce((acc, cur) => {
+      return acc + cur.amount;
+    }, 0);
 
   return (
     <div className="Portfolio">
       {error && <p>{error}</p>}
-      <button onClick={() => setShow(!show)}>
-        {show ? "Show Portfolio" : "Show Action History"}
-      </button>
-      {show && (
-        <div className="actionHistory">
-          <ActionHistory documents={documents} />
-        </div>
-      )}
-      {!show && (
-        <div className="ShowPortfolio">
-          {documents && (
-            <div className="graph-container">
-              <div className="title">
-                <h1>My Portfolio</h1>
-                <h1>250€</h1>
-              </div>
-              <LineGraph stock={documents} />
-              <div className="lists">
-                <ul>
-                  <li>Shares owned:</li>
-                  <li>Most shares owned:</li>
-                </ul>
-                <ul>
-                  <li>
-                    Shares owned:<strong>50</strong>
-                  </li>
-                  <li>
-                    Most shares owned:<strong>Apple</strong>
-                  </li>
-                </ul>
-              </div>
+      <div className="ShowPortfolio">
+        {documents && (
+          <div className="graph-container">
+            <div className="title">
+              <h1>My Portfolio</h1>
+              <h1>
+                $
+                {balance &&
+                  balance[0].totalValue.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+              </h1>
             </div>
-          )}
+            <LineGraph portfolio={balance && balance[0].portfolioHistory} />
+            <div className="lists">
+              <ul>
+                <li>
+                  Shares owned:<strong>{totalAmountOfStocks} shares</strong>
+                </li>
+                <li>
+                  Percent change<strong>+2%</strong>
+                </li>
+                <li>
+                  Change<strong>+$50</strong>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  Cash Balance:
+                  <strong>
+                    $
+                    {balance &&
+                      balance[0].balance.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                  </strong>
+                </li>
+                <li>
+                  Stocks Value:
+                  <strong>
+                    $
+                    {balance &&
+                      balance[0].stocksValue.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                  </strong>
+                </li>
+                <li>
+                  Total Value:
+                  <strong>
+                    $
+                    {balance &&
+                      balance[0].totalValue.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                  </strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
 
-          {documents && <PreviewBriefcase myStocks={documents} />}
-        </div>
-      )}
+        {documents && <PreviewBriefcase myStocks={documents} />}
+      </div>
     </div>
   );
 };

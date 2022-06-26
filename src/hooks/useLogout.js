@@ -16,6 +16,7 @@ export const useLogout = () => {
       //signout
       await projectAuth.signOut();
       dispatch({ type: "LOGOUT" });
+      window.location.replace("/login");
 
       // update state
       setIsPending(false);

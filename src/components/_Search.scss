@@ -1,3 +1,5 @@
+@import "../Mixins";
+
 .Search {
   height: 100%;
   img {
@@ -11,8 +13,7 @@
     background-color: white;
     border-radius: 0.5rem;
 
-    display: flex;
-    align-items: center;
+    @include flexCenter;
   }
 
   input {
@@ -44,8 +45,7 @@
     font-weight: 500;
     cursor: pointer;
 
-    display: flex;
-    align-items: center;
+    @include flexCenter;
     justify-content: center;
 
     transition: all 1s;

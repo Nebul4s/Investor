@@ -18,8 +18,103 @@ body {
   width: 100vw;
   color: white;
   overflow: hidden;
+  /* width */
+  /* Handle */
+  /* Handle on hover */
+}
+.App ::-webkit-scrollbar {
+  width: 1rem;
+}
+.App ::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10rem;
+}
+.App ::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
+@media (max-width: 1070px) {
+  .NavBar .header__menuItems p {
+    display: none;
+  }
+}
+@media (max-width: 980px) {
+  .NavBar .header__logo {
+    margin-left: 2.4rem !important;
+  }
+  .NavBar .header__logo h1 {
+    font-size: 2.8rem;
+    width: 50%;
+  }
+  .NavBar .header__logo img {
+    width: 50%;
+    height: 4.8rem;
+  }
+}
+@media (max-width: 870px) {
+  .NavBar .header__search {
+    padding-right: 0.8rem !important;
+  }
+  .NavBar .header__search input {
+    font-size: 1.6rem !important;
+  }
+  .NavBar .header__menuItems {
+    margin-right: 1.2rem !important;
+    gap: 0.8rem !important;
+    font-size: 1.4rem !important;
+  }
+  .NavBar .header__menuItems button {
+    font-size: 1.4rem !important;
+  }
+}
+@media (max-width: 720px) {
+  .NavBar .header__logo {
+    margin-left: 1.2rem !important;
+  }
+  .NavBar .header__logo h1 {
+    font-size: 2rem !important;
+    width: 60% !important;
+  }
+  .NavBar .header__logo img {
+    width: 40% !important;
+  }
+
+  .header__search {
+    padding-right: 0.8rem !important;
+  }
+  .header__search input {
+    font-size: 1.6rem !important;
+  }
+
+  .header__menuItems {
+    margin-right: 1.2rem !important;
+    gap: 0.8rem !important;
+    font-size: 1.4rem !important;
+  }
+  .header__menuItems button {
+    font-size: 1.4rem !important;
+  }
+}
+@media (max-width: 570px) {
+  .NavBar .header__logo {
+    margin-left: 1.2rem !important;
+  }
+  .NavBar .header__logo h1 {
+    font-size: 2rem !important;
+    width: 60% !important;
+  }
+  .NavBar .header__logo img {
+    display: none !important;
+  }
+
+  .header__search {
+    padding-right: 0rem !important;
+    padding-left: 1.2rem !important;
+  }
+  .header__search input {
+    font-size: 1.6rem !important;
+  }
+}
 .container {
   height: 100%;
   width: 100%;
@@ -29,15 +124,134 @@ body {
   position: relative;
 }
 
+@media (max-width: 1700px) {
+  .container ul .text {
+    font-size: 1.2rem;
+  }
+  .container ul .text h2 {
+    font-size: 2rem !important;
+  }
+  .container ul .price .stock-price {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 1400px) {
+  .container .ShowSingleMarket .lists {
+    width: 70% !important;
+  }
+  .container ul .text {
+    font-size: 1.2rem;
+  }
+  .container ul .text h2 {
+    font-size: 2rem !important;
+  }
+  .container ul .price .stock-price {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 1150px) {
+  .container .ShowSingleMarket .lists {
+    gap: 0 !important;
+  }
+  .container .ShowSingleMarket .lists li {
+    font-size: 1.4rem;
+  }
+  .container .ShowSingleMarket .buttons {
+    flex-direction: column;
+    gap: 0.6rem !important;
+  }
+  .container ul .text {
+    font-size: 1rem;
+  }
+  .container ul .text h2 {
+    font-size: 1.6rem !important;
+  }
+  .container ul .price .stock-price {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 900px) {
+  .container .PreviewBriefcase {
+    display: none;
+  }
+  .container .PreviewMarkets {
+    grid-column: 1/3;
+  }
+}
+@media (max-width: 830px) {
+  .container .ShowSingleMarket .title h1 {
+    font-size: 2.4rem;
+  }
+  .container .ShowSingleMarket .buying-power h2 {
+    font-size: 2.4rem;
+  }
+  .container .ShowSingleMarket .buying-power span {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 730px) {
+  .container .ShowSingleMarket {
+    width: 70% !important;
+    padding-right: 0.8rem !important;
+    padding-left: 0.8rem !important;
+  }
+  .container .ShowSingleMarket label span {
+    font-size: 1.4rem;
+  }
+  .container .ShowSingleMarket .controls {
+    display: flex;
+    flex-direction: column;
+  }
+  .container ul {
+    width: 30% !important;
+  }
+  .container ul .text {
+    font-size: 1rem;
+  }
+  .container ul .text h2 {
+    font-size: 1.4rem !important;
+  }
+  .container ul .price .stock-price {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 630px) {
+  .container .info {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .container .info .lists {
+    grid-column: 1/3;
+    grid-row: 1;
+    width: 100% !important;
+  }
+  .container .info form {
+    grid-column: 1/3;
+    grid-row: 2;
+    width: 100% !important;
+  }
+}
+@media (max-width: 460px) {
+  .container .info {
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .container .info .lists {
+    flex-direction: column;
+    grid-row: 1/3;
+    width: 100% !important;
+  }
+  .container .info .lists ul {
+    width: 100% !important;
+  }
+  .container .info form {
+    grid-row: 3;
+    width: 100% !important;
+  }
+}
 .Portfolio {
   height: 100%;
   background-color: black;
-  position: relative;
-}
-.Portfolio button {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 .Portfolio .ShowPortfolio {
   height: 100%;
@@ -54,7 +268,6 @@ body {
   justify-content: space-between;
 }
 .Portfolio .graph-container .lists {
-  width: 50%;
   display: flex;
   gap: 1.2rem;
 }
@@ -81,6 +294,73 @@ body {
   width: 25%;
 }
 
+@media (max-width: 1500px) {
+  .Portfolio .PreviewBriefcase ul .text {
+    font-size: 1.2rem;
+  }
+  .Portfolio .PreviewBriefcase ul .text h2 {
+    font-size: 2rem !important;
+  }
+  .Portfolio .PreviewBriefcase ul .price .stock-price {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 1170px) {
+  .Portfolio .PreviewBriefcase ul .text {
+    font-size: 1rem;
+  }
+  .Portfolio .PreviewBriefcase ul .text h2 {
+    font-size: 1.8rem !important;
+  }
+  .Portfolio .PreviewBriefcase ul .price .stock-price {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 1030px) {
+  .Portfolio .graph-container {
+    width: 65% !important;
+  }
+  .Portfolio .PreviewBriefcase {
+    width: 35% !important;
+  }
+  .Portfolio .PreviewBriefcase ul .text {
+    font-size: 1.2rem;
+  }
+  .Portfolio .PreviewBriefcase ul .text h2 {
+    font-size: 2rem !important;
+  }
+  .Portfolio .PreviewBriefcase ul .price .stock-price {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 780px) {
+  .Portfolio .graph-container .title h1 {
+    font-size: 2.4rem;
+  }
+  .Portfolio .graph-container li {
+    font-size: 1.6rem;
+  }
+  .Portfolio .PreviewBriefcase ul .text {
+    font-size: 1.2rem;
+  }
+  .Portfolio .PreviewBriefcase ul .text h2 {
+    font-size: 1.6rem !important;
+  }
+  .Portfolio .PreviewBriefcase ul .price .stock-price {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 700px) {
+  .Portfolio .PreviewBriefcase ul .text {
+    font-size: 1rem;
+  }
+  .Portfolio .PreviewBriefcase ul .text h2 {
+    font-size: 1.4rem !important;
+  }
+  .Portfolio .PreviewBriefcase ul .price .stock-price {
+    font-size: 1.4rem;
+  }
+}
 .Login {
   width: 100%;
   height: 100%;
@@ -88,6 +368,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+}
+.Login .error {
+  margin-bottom: 2.4rem;
 }
 .Login .bg-img {
   filter: blur(6px) brightness(0.8);
@@ -122,8 +405,8 @@ body {
 }
 .Login form {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   gap: 2.4rem;
 }
 .Login form label {
@@ -155,6 +438,16 @@ body {
   color: white;
 }
 
+@media (max-width: 1200px) {
+  .Login .wrapper {
+    width: 50% !important;
+  }
+}
+@media (max-width: 580px) {
+  .Login .wrapper {
+    width: 80% !important;
+  }
+}
 .Signup {
   width: 100%;
   height: 100%;
@@ -196,8 +489,8 @@ body {
 }
 .Signup form {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   gap: 2.4rem;
 }
 .Signup form label {
@@ -232,33 +525,25 @@ body {
   color: white;
 }
 
-.Logout {
-  background-color: black;
-  height: 100%;
+@media (max-width: 1200px) {
+  .Signup .wrapper {
+    width: 50% !important;
+  }
 }
-.Logout .logout-modal {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 3.2rem;
-  background-color: green;
-  z-index: 999;
+@media (max-width: 580px) {
+  .Signup .wrapper {
+    width: 80% !important;
+  }
 }
-.Logout .logout-modal span {
-  opacity: 0.6;
-}
-
 .PreviewBriefcase {
   background-color: #222;
+  overflow-y: auto;
+  height: 100%;
 }
 .PreviewBriefcase ul {
   list-style: none;
+  overflow: auto;
+  height: 85%;
 }
 .PreviewBriefcase ul li {
   display: flex;
@@ -272,21 +557,25 @@ body {
 .PreviewBriefcase ul li .text {
   display: flex;
   flex-direction: column;
-  flex: 0.34;
+  flex: 1;
+  width: 50%;
 }
 .PreviewBriefcase ul li .text h2 {
   font-size: 2.4rem;
 }
-.PreviewBriefcase ul li img {
+.PreviewBriefcase ul li .stockSVG {
   height: 3.6rem;
-  flex: 0.33;
+  width: 25%;
+}
+.PreviewBriefcase ul li .trendingIMG {
+  width: 50%;
 }
 .PreviewBriefcase ul li .price {
   display: flex;
   flex-direction: column;
   font-size: 2.4rem;
   align-items: flex-end;
-  flex: 0.33;
+  width: 25%;
 }
 .PreviewBriefcase ul li .price .percent {
   font-size: 1.2rem;
@@ -302,10 +591,17 @@ body {
 .PreviewMarkets {
   background-color: #222;
   display: flex;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+}
+.PreviewMarkets .markets {
+  height: 90%;
+  overflow-y: auto;
 }
 .PreviewMarkets ul {
   list-style: none;
-  flex: 0.25;
+  width: 25%;
 }
 .PreviewMarkets ul li {
   display: flex;
@@ -319,21 +615,25 @@ body {
 .PreviewMarkets ul li .text {
   display: flex;
   flex-direction: column;
-  flex: 0.34;
+  flex: 1;
+  width: 50%;
 }
 .PreviewMarkets ul li .text h2 {
   font-size: 2.4rem;
 }
-.PreviewMarkets ul li img {
+.PreviewMarkets ul li .stockSVG {
   height: 3.6rem;
-  flex: 0.33;
+  width: 25%;
+}
+.PreviewMarkets ul li .trendingIMG {
+  width: 50%;
 }
 .PreviewMarkets ul li .price {
   display: flex;
   flex-direction: column;
-  font-size: 2.4rem;
   align-items: flex-end;
-  flex: 0.33;
+  font-size: 2.4rem;
+  width: 25%;
 }
 .PreviewMarkets ul li .price .percent {
   font-size: 1.2rem;
@@ -348,8 +648,22 @@ body {
 
 .ShowSingleMarket {
   padding: 2.4rem;
-  flex: 0.75;
+  width: 75%;
+  height: 93%;
+  overflow-y: auto;
   background-color: black;
+}
+.ShowSingleMarket .startingMsg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.6rem;
+}
+.ShowSingleMarket .controls {
+  display: flex;
+  justify-content: space-between;
 }
 .ShowSingleMarket .title {
   display: flex;
@@ -360,6 +674,17 @@ body {
 .ShowSingleMarket .title h1 {
   margin-bottom: 1.8rem;
 }
+.ShowSingleMarket .buying-power {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background-color: #222;
+  padding: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+.ShowSingleMarket .buying-power span {
+  font-size: 2.4rem;
+}
 .ShowSingleMarket .times {
   background-color: #222;
   font-size: 2.4rem;
@@ -367,6 +692,7 @@ body {
   margin-bottom: 2.4rem;
   display: flex;
   gap: 1.2rem;
+  height: 100%;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -392,6 +718,7 @@ body {
 }
 .ShowSingleMarket .info .lists ul {
   flex: 0.5;
+  overflow-x: hidden;
 }
 .ShowSingleMarket .info .lists ul li {
   border: none;
@@ -434,19 +761,26 @@ body {
 }
 
 .NavBar {
-  background-color: #111;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  background-color: #111;
   overflow: hidden;
-  height: 7%;
+  height: 7rem;
+  width: 100%;
 }
 .NavBar .header__logo {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   margin-left: 4.8rem;
-  width: 9.6rem;
+}
+.NavBar .header__logo h1 {
+  width: 50%;
+}
+.NavBar .header__logo img {
+  width: 50%;
+  height: 4.8rem;
 }
 .NavBar .header__search {
   display: flex;
@@ -456,7 +790,7 @@ body {
 .NavBar .header__searchContainer {
   border: 1px solid #31363a;
   border-radius: 0.4rem;
-  width: 37.5rem;
+  width: 100%;
 }
 .NavBar .header__searchContainer input {
   padding: 0.8rem;
@@ -474,8 +808,8 @@ body {
 .NavBar .header__menuItems {
   display: flex;
   align-items: center;
-  margin-right: 1.8rem;
   gap: 1.2rem;
+  margin-right: 1.8rem;
   font-weight: 700;
   font-size: 1.8rem;
 }
@@ -555,13 +889,4 @@ body {
   height: 50%;
   width: 100%;
   padding: 3.2rem;
-}
-
-.ActionHistory {
-  width: 100%;
-  height: 100%;
-}
-.ActionHistory .PreviewBriefcase {
-  width: 100%;
-  height: 100%;
 }/*# sourceMappingURL=index.css.map */

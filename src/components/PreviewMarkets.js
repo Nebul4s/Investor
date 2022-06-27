@@ -29,10 +29,6 @@ const PreviewMarkets = ({ uid, myStocks }) => {
   uid && updateDocumentPrices(uid, formatData, myStocks);
   myStocks && updateStocksValue(myStocks, uid);
 
-  if (error) {
-    console.log(error);
-  }
-
   useEffect(() => {
     const symbolList = [
       "AAPL",

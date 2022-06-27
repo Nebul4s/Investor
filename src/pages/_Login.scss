@@ -6,6 +6,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  position: relative;
   .error {
     margin-bottom: 2.4rem;
   }
@@ -26,9 +27,8 @@
 
     background-color: black;
     width: 30%;
-    margin: auto;
 
-    height: fit-content;
+    // height: fit-content;
     border-radius: 0.8rem;
   }
   .title {

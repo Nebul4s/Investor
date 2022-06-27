@@ -5,14 +5,13 @@ import { useCollection } from "../hooks/useCollection";
 
 import LineGraph from "./LineGraph";
 
-const ShowSingleMarket = ({ stock, uid }) => {
+const ShowSingleMarket = ({ stock, docExists }) => {
   const [amount, setAmount] = useState("");
   const [action, setAction] = useState("");
   const [timeElement, setTimeElement] = useState("");
   const [time, setTime] = useState("");
   const { user } = useAuthContext();
   const { updateDocument, response } = useFirestore("stocks");
-  const { updateBalance } = useFirestore("users");
   const { balance } = useCollection("users", ["uid", "==", user.uid]);
 
   const handleTimeSelection = (e) => {
@@ -35,7 +34,6 @@ const ShowSingleMarket = ({ stock, uid }) => {
     }
     if (user) {
       updateDocument(stock, user, action, amount);
-      updateBalance(stock, user, action, amount);
     }
   };
 

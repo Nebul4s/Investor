@@ -368,6 +368,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  position: relative;
 }
 .Login .error {
   margin-bottom: 2.4rem;
@@ -388,10 +389,6 @@ body {
   transform: translate(-50%, -50%);
   background-color: black;
   width: 30%;
-  margin: auto;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   border-radius: 0.8rem;
 }
 .Login .title {
@@ -455,6 +452,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  position: relative;
 }
 .Signup .bg-img {
   filter: blur(6px) brightness(0.8);
@@ -472,7 +470,6 @@ body {
   transform: translate(-50%, -50%);
   background-color: black;
   width: 30%;
-  margin: auto;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;

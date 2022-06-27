@@ -42,7 +42,8 @@ const Portfolio = () => {
                   Percent change<strong>+2%</strong>
                 </li>
                 <li>
-                  Change<strong>+$50</strong>
+                  Change
+                  <strong></strong>
                 </li>
               </ul>
               <ul>

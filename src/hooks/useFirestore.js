@@ -75,13 +75,11 @@ export const useFirestore = (collection) => {
       if (!query.empty) {
         query.forEach((doc) => {
           if (action === "buy") {
-            //Somehow inherits the if check of updating balance when the action is sell and on the first purschase wont update balance
-            updateBalance(stock, user, action, amount);
-
-            setExists(true);
             ref.doc(doc.id).update({
               amount: (doc.data().amount += Number(amount)),
             });
+            updateBalance(stock, user, action, amount);
+            setExists(true);
           }
 
           if (action === "sell") {
@@ -99,16 +97,18 @@ export const useFirestore = (collection) => {
         });
       }
 
-      if (query.empty && action === "buy")
+      if (query.empty && action === "buy") {
         addDocument({ uid: user.uid, amount, ...stock });
+        updateBalance(stock, user, action, amount);
+        setExists(true);
+      }
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
     }
   };
 
   const updateBalance = async (stock, user, action, amount) => {
     try {
-      console.log("running balance");
       const usersRef = projectFirestore.collection("users");
       const price = Number(stock.close * amount);
 
@@ -117,7 +117,6 @@ export const useFirestore = (collection) => {
       if (query.empty) return;
 
       query.forEach((doc) => {
-        console.log(doc);
         if (action === "buy") {
           usersRef.doc(doc.id).update({
             balance: (doc.data().balance -= price),
@@ -134,7 +133,7 @@ export const useFirestore = (collection) => {
         }
       });
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
     }
   };
 
@@ -150,12 +149,15 @@ export const useFirestore = (collection) => {
           if (doc.data().symbol === item.symbol) {
             ref.doc(doc.id).update({
               close: item.close,
+              volume: item.volume,
+              percent_change: item.percent_change,
+              change: item.change,
             });
           }
         });
       });
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
     }
   };
 

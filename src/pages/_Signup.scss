@@ -3,15 +3,14 @@
 .Signup {
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: black;
   overflow: hidden;
   position: relative;
   .bg-img {
-    filter: blur(6px) brightness(0.8);
+    filter: brightness(0.7);
     border: none;
     height: 100%;
+    width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

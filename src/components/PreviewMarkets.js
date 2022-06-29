@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import ShowSingleMarket from "./ShowSingleMarket";
 import Placeholder from "./StartingMsg";
 
-//svgs
+//Images and svgs
 import stockSVG from "../assets/stock.svg";
 import trendingUp from "../assets/trending_up.svg";
 import trendingDown from "../assets/trending_down.svg";

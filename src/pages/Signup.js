@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 
+//Images and svgs
+import LazyImg from "../components/LazyImg";
 import bgIMG from "../assets/background.jpg";
+import lowQ from "../assets/placeholder.jpg";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -16,10 +19,7 @@ const Signup = () => {
 
   return (
     <div className="Signup">
-      <div
-        className="bg-img"
-        style={{ backgroundImage: `url(${bgIMG})` }}
-      ></div>
+      <LazyImg lq={lowQ} src={bgIMG} className="bg-img" />
       <div className="wrapper">
         <div className="title">
           <h2>Signup</h2>

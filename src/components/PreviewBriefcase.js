@@ -1,17 +1,9 @@
-//svgs
+//Images and svgs
 import stockSVG from "../assets/stock.svg";
 import trendingUp from "../assets/trending_up.svg";
 import trendingDown from "../assets/trending_down.svg";
 
 const PreviewBriefcase = ({ myStocks, error }) => {
-  const handleStock = (e, item) => {
-    console.log(e, item);
-  };
-
-  const checkAmount = (e, item) => {
-    console.log(e, item);
-  };
-
   return (
     <div className="PreviewBriefcase">
       <h2>My Stocks</h2>
@@ -19,17 +11,11 @@ const PreviewBriefcase = ({ myStocks, error }) => {
       <ul>
         {myStocks &&
           myStocks.map((item) => (
-            <li
-              className="market-el"
-              key={item.id}
-              onClick={(e) => handleStock(e, item)}
-            >
+            <li className="market-el" key={item.id}>
               <div className="text">
                 <h2>{item.name}</h2>
                 <span>{item.symbol}</span>
-                <span onChange={(e) => checkAmount(e, item)}>
-                  Amount owned: {item.amount}
-                </span>
+                <span>Amount owned: {item.amount}</span>
               </div>
               <img className="stockSVG" src={stockSVG} alt="item img" />
               <div className="price">

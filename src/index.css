@@ -52,12 +52,6 @@ body {
   }
 }
 @media (max-width: 870px) {
-  .NavBar .header__search {
-    padding-right: 0.8rem !important;
-  }
-  .NavBar .header__search input {
-    font-size: 1.6rem !important;
-  }
   .NavBar .header__menuItems {
     margin-right: 1.2rem !important;
     gap: 0.8rem !important;
@@ -79,13 +73,6 @@ body {
     width: 40% !important;
   }
 
-  .header__search {
-    padding-right: 0.8rem !important;
-  }
-  .header__search input {
-    font-size: 1.6rem !important;
-  }
-
   .header__menuItems {
     margin-right: 1.2rem !important;
     gap: 0.8rem !important;
@@ -105,14 +92,6 @@ body {
   }
   .NavBar .header__logo img {
     display: none !important;
-  }
-
-  .header__search {
-    padding-right: 0rem !important;
-    padding-left: 1.2rem !important;
-  }
-  .header__search input {
-    font-size: 1.6rem !important;
   }
 }
 .container {
@@ -364,9 +343,7 @@ body {
 .Login {
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: black;
   overflow: hidden;
   position: relative;
 }
@@ -374,9 +351,10 @@ body {
   margin-bottom: 2.4rem;
 }
 .Login .bg-img {
-  filter: blur(6px) brightness(0.8);
+  filter: brightness(0.7);
   border: none;
   height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -448,16 +426,15 @@ body {
 .Signup {
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: black;
   overflow: hidden;
   position: relative;
 }
 .Signup .bg-img {
-  filter: blur(6px) brightness(0.8);
+  filter: brightness(0.7);
   border: none;
   height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -779,29 +756,6 @@ body {
   width: 50%;
   height: 4.8rem;
 }
-.NavBar .header__search {
-  display: flex;
-  align-items: center;
-  padding: 2.4rem;
-}
-.NavBar .header__searchContainer {
-  border: 1px solid #31363a;
-  border-radius: 0.4rem;
-  width: 100%;
-}
-.NavBar .header__searchContainer input {
-  padding: 0.8rem;
-  font-size: 2rem;
-  background-color: transparent;
-  border: none;
-  width: 100%;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  color: white;
-}
-.NavBar .header__searchContainer input:focus {
-  outline: none;
-}
 .NavBar .header__menuItems {
   display: flex;
   align-items: center;
@@ -835,51 +789,6 @@ body {
 }
 .NavBar .header__menuItems a:active, .NavBar .header__menuItems a:hover {
   color: #5ac53b;
-}
-
-.Search {
-  height: 100%;
-}
-.Search img {
-  width: 3.6rem;
-  height: 3.6rem;
-  color: white;
-}
-.Search .input-group {
-  height: 100%;
-  background-color: white;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-}
-.Search input {
-  background: transparent;
-  padding: 0.25rem;
-  border: 0;
-  flex: 1 1 auto;
-  width: 100%;
-  font-size: 2rem;
-  padding-left: 3.2rem;
-  border: none;
-  border-radius: 0.5rem;
-}
-.Search input:focus {
-  outline: none;
-}
-.Search button {
-  background-color: #333;
-  height: 100%;
-  width: 50%;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 2rem;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 1s;
 }
 
 .linegraph {

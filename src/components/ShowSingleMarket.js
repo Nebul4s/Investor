@@ -3,13 +3,15 @@ import { useFirestore } from "../hooks/useFirestore";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCollection } from "../hooks/useCollection";
 
+//components
 import LineGraph from "./LineGraph";
 
-const ShowSingleMarket = ({ stock, docExists }) => {
+const ShowSingleMarket = ({ stock }) => {
   const [amount, setAmount] = useState("");
   const [action, setAction] = useState("");
   const [timeElement, setTimeElement] = useState("");
   const [time, setTime] = useState("");
+
   const { user } = useAuthContext();
   const { updateDocument, response } = useFirestore("stocks");
   const { balance } = useCollection("users", ["uid", "==", user.uid]);

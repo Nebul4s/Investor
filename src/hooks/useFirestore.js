@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState } from "react";
+import { useReducer, useState } from "react";
 import { projectFirestore, timestamp } from "../firebase/config";
 
 let initialState = {
@@ -13,6 +13,13 @@ const firestoreReducer = (state, action) => {
     case "IS_PENDING":
       return { isPending: true, document: null, success: false, error: null };
     case "ADDED_DOCUMENT":
+      return {
+        isPending: false,
+        document: action.payload,
+        success: true,
+        error: null,
+      };
+    case "UPDATED_DOCUMENT":
       return {
         isPending: false,
         document: action.payload,
@@ -35,18 +42,10 @@ const firestoreReducer = (state, action) => {
 
 export const useFirestore = (collection) => {
   const [response, dispatch] = useReducer(firestoreReducer, initialState);
-  const [isCancelled, setIsCancelled] = useState(false);
   const [exists, setExists] = useState(true);
 
   // collection ref
   const ref = projectFirestore.collection(collection);
-
-  // only dispatch is not cancelled
-  const dispatchIfNotCancelled = (action) => {
-    if (!isCancelled) {
-      dispatch(action);
-    }
-  };
 
   // add a document
   const addDocument = async (doc) => {
@@ -73,25 +72,33 @@ export const useFirestore = (collection) => {
         .get();
 
       if (!query.empty) {
+        dispatch({ type: "IS_PENDING" });
+
         query.forEach((doc) => {
           if (action === "buy") {
             ref.doc(doc.id).update({
               amount: (doc.data().amount += Number(amount)),
             });
+
+            dispatch({ type: "UPDATED_DOCUMENT", payload: doc.data() });
+
             updateBalance(stock, user, action, amount);
             setExists(true);
           }
 
           if (action === "sell") {
+            //check if amount inputted exceeds amount owned
             if (doc.data().amount < Number(amount)) {
               amount = doc.data().amount;
             }
+
             ref.doc(doc.id).update({
               amount: (doc.data().amount -= Number(amount)),
             });
 
-            if (doc.data().amount - Number(amount) === 0) setExists(false);
+            dispatch({ type: "UPDATED_DOCUMENT", payload: doc.data() });
 
+            if (doc.data().amount - Number(amount) === 0) setExists(false);
             if (exists) updateBalance(stock, user, action, amount);
           }
         });
@@ -206,15 +213,11 @@ export const useFirestore = (collection) => {
 
     try {
       await ref.doc(id).delete();
-      dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" });
+      dispatch({ type: "DELETED_DOCUMENT" });
     } catch (err) {
-      dispatchIfNotCancelled({ type: "ERROR", payload: "could not delete" });
+      dispatch({ type: "ERROR", payload: "could not delete" });
     }
   };
-
-  useEffect(() => {
-    return () => setIsCancelled(true);
-  }, []);
 
   return {
     updateStocksValue,

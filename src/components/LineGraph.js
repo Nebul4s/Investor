@@ -64,7 +64,7 @@ const LineGraph = ({ stock, portfolio, time }) => {
         let year = Math.trunc(currentDate - 1000 * 60 * 60 * 24 * 7 * 4 * 12);
 
         tempData.forEach((item) => {
-          //Foreach loop, check chosen time and compare item dates to helpers above
+          //Foreach revolution, check chosen time and compare item dates to helpers above
           if (time === "1WK" && +item.x >= week) {
             finalData.push(item);
             setGraphData(finalData);

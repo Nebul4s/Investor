@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 
+//Images and svgs
+import LazyImg from "../components/LazyImg";
 import bgIMG from "../assets/background.jpg";
+import lowQ from "../assets/placeholder.jpg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,10 +18,8 @@ const Login = () => {
 
   return (
     <div className="Login">
-      <div
-        className="bg-img"
-        style={{ backgroundImage: `url(${bgIMG})` }}
-      ></div>
+      <LazyImg lq={lowQ} src={bgIMG} className="bg-img" />
+
       <div className="wrapper">
         <div className="title">
           <h2>Login</h2>

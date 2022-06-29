@@ -1,6 +1,7 @@
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCollection } from "../hooks/useCollection";
 
+//components
 import LineGraph from "../components/LineGraph";
 import PreviewBriefcase from "../components/PreviewBriefcase";
 
@@ -14,6 +15,12 @@ const Portfolio = () => {
     documents.reduce((acc, cur) => {
       return acc + cur.amount;
     }, 0);
+
+  let lastValue = balance && balance[0].portfolioHistory.at(-2).y;
+  let currentValue = balance && balance[0].totalValue;
+
+  const change = lastValue - currentValue;
+  const pChange = ((currentValue - lastValue) / lastValue) * 100;
 
   return (
     <div className="Portfolio">
@@ -39,11 +46,17 @@ const Portfolio = () => {
                   Shares owned:<strong>{totalAmountOfStocks} shares</strong>
                 </li>
                 <li>
-                  Percent change<strong>+2%</strong>
+                  Percent change<strong>{pChange.toFixed(2)}%</strong>
                 </li>
                 <li>
                   Change
-                  <strong></strong>
+                  <strong>
+                    $
+                    {change.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </strong>
                 </li>
               </ul>
               <ul>

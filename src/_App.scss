@@ -46,12 +46,6 @@
 }
 @media (max-width: 870px) {
   .NavBar {
-    .header__search {
-      padding-right: 0.8rem !important;
-      input {
-        font-size: 1.6rem !important;
-      }
-    }
     .header__menuItems {
       margin-right: 1.2rem !important;
       gap: 0.8rem !important;
@@ -76,12 +70,7 @@
       }
     }
   }
-  .header__search {
-    padding-right: 0.8rem !important;
-    input {
-      font-size: 1.6rem !important;
-    }
-  }
+
   .header__menuItems {
     margin-right: 1.2rem !important;
     gap: 0.8rem !important;
@@ -105,13 +94,7 @@
       }
     }
   }
-  .header__search {
-    padding-right: 0rem !important;
-    padding-left: 1.2rem !important;
-    input {
-      font-size: 1.6rem !important;
-    }
-  }
+
   // .header__menuItems {
   //   margin-right: 1.2rem !important;
   //   gap: 0.8rem !important;

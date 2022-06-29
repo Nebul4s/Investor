@@ -3,6 +3,7 @@ import { useCollection } from "../hooks/useCollection";
 import { useFirestore } from "../hooks/useFirestore";
 import { useEffect } from "react";
 
+//components
 import PreviewMarkets from "../components/PreviewMarkets";
 import PreviewBriefcase from "../components/PreviewBriefcase";
 

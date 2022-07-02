@@ -109,6 +109,7 @@ const LineGraph = ({ stock, portfolio, time }) => {
             ],
           }}
           options={{
+            responsive: true,
             maintainAspectRatio: false,
             legend: {
               display: false,

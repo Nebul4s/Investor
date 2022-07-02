@@ -190,8 +190,8 @@ export const useFirestore = (collection) => {
 
         //if last value of portfoliohistory array is not the same as currentvalue push new item to portfoliohistory array
         if (
-          latestValue.y !== (doc.data().balance += doc.data().stocksValue) ||
-          doc.data().portfolioHistory.length === 0
+          doc.data().portfolioHistory.length === 0 ||
+          latestValue.y !== (doc.data().balance += doc.data().stocksValue)
         ) {
           ref.doc(doc.id).update({
             portfolioHistory: [

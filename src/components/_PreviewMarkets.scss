@@ -6,9 +6,22 @@
   overflow-y: auto;
   width: 100%;
   height: 100%;
+
+  .mobile-menu__btn {
+    img {
+      font-size: 2.4rem;
+      background-color: #444;
+      padding: 0.4rem;
+      border-radius: 1rem;
+      display: none;
+    }
+  }
   .markets {
     height: 90%;
     overflow-y: auto;
+    .markets__active {
+      width: 40%;
+    }
   }
   ul {
     list-style: none;

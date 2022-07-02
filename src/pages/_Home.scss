@@ -9,6 +9,7 @@
   background-color: #000;
   position: relative;
 }
+
 @media (max-width: 1700px) {
   .container {
     ul {
@@ -85,9 +86,30 @@
     }
     .PreviewMarkets {
       grid-column: 1 / 3;
+      .ShowSingleMarket {
+        width: 100%;
+      }
+      .singleMarket__active {
+        width: 70%;
+      }
+      .markets {
+        display: none;
+      }
+      .markets__active {
+        width: 30%;
+
+        display: block;
+      }
+
+      .mobile-menu__btn {
+        img {
+          display: block;
+        }
+      }
     }
   }
 }
+
 @media (max-width: 830px) {
   .container {
     .ShowSingleMarket {
@@ -109,30 +131,35 @@
 }
 @media (max-width: 730px) {
   .container {
-    .ShowSingleMarket {
-      width: 70% !important;
-      padding-right: 0.8rem !important;
-      padding-left: 0.8rem !important;
-      label {
-        span {
-          font-size: 1.4rem;
+    .PreviewMarkets {
+      .markets__active {
+        width: 40%;
+
+        display: block;
+      }
+      .ShowSingleMarket {
+        padding-right: 0.8rem !important;
+        padding-left: 0.8rem !important;
+        label {
+          span {
+            font-size: 1.4rem;
+          }
+        }
+        .controls {
+          @include flexColumn;
         }
       }
-      .controls {
-        @include flexColumn;
-      }
-    }
-    ul {
-      width: 30% !important;
-      .text {
-        h2 {
-          font-size: 1.4rem !important;
+      ul {
+        .text {
+          h2 {
+            font-size: 1.4rem !important;
+          }
+          font-size: 1rem;
         }
-        font-size: 1rem;
-      }
-      .price {
-        .stock-price {
-          font-size: 1.2rem;
+        .price {
+          .stock-price {
+            font-size: 1.2rem;
+          }
         }
       }
     }
@@ -157,6 +184,23 @@
     }
   }
 }
+@media (max-width: 550px) {
+  .container {
+    .PreviewMarkets {
+      .ShowSingleMarket {
+        .title {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      .markets__active {
+        width: 50%;
+
+        display: block;
+      }
+    }
+  }
+}
 @media (max-width: 460px) {
   .container {
     .info {
@@ -172,6 +216,24 @@
       form {
         grid-row: 3;
         width: 100% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    .PreviewMarkets {
+      .ShowSingleMarket {
+        width: 100%;
+      }
+      .singleMarket__active {
+        display: none;
+      }
+      .markets__active {
+        width: 100%;
+
+        display: block;
       }
     }
   }

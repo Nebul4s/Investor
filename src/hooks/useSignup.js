@@ -23,6 +23,7 @@ export const useSignup = () => {
       }
 
       //create user document
+
       projectFirestore.collection("users").doc(res.user.uid).set({
         balance: 20000,
         totalValue: 0,

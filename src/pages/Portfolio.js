@@ -16,7 +16,10 @@ const Portfolio = () => {
       return acc + cur.amount;
     }, 0);
 
-  let lastValue = balance && balance[0].portfolioHistory.at(-2).y;
+  let lastValue =
+    balance &&
+    balance[0].portfolioHistory.length >= 2 &&
+    balance[0].portfolioHistory.at(-2).y;
   let currentValue = balance && balance[0].totalValue;
 
   const change = lastValue - currentValue;
@@ -46,16 +49,22 @@ const Portfolio = () => {
                   Shares owned:<strong>{totalAmountOfStocks} shares</strong>
                 </li>
                 <li>
-                  Percent change<strong>{pChange.toFixed(2)}%</strong>
+                  Percent change
+                  <strong>
+                    {balance[0].portfolioHistory.length >= 2 &&
+                      pChange.toFixed(2)}
+                    %
+                  </strong>
                 </li>
                 <li>
                   Change
                   <strong>
                     $
-                    {change.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
+                    {balance[0].portfolioHistory.length >= 2 &&
+                      change.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
                   </strong>
                 </li>
               </ul>
@@ -97,7 +106,6 @@ const Portfolio = () => {
             </div>
           </div>
         )}
-
         {documents && <PreviewBriefcase myStocks={documents} />}
       </div>
     </div>

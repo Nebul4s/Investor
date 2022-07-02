@@ -8,6 +8,8 @@ import Placeholder from "./StartingMsg";
 
 //Images and svgs
 import stockSVG from "../assets/stock.svg";
+import menuSVG from "../assets/menu.svg";
+import closeSVG from "../assets/close.svg";
 import trendingUp from "../assets/trending_up.svg";
 import trendingDown from "../assets/trending_down.svg";
 
@@ -15,6 +17,7 @@ const PreviewMarkets = ({ uid, myStocks }) => {
   const [singleMarket, setSingleMarket] = useState(null);
   const [marketElement, setMarketElement] = useState("");
   const [url, setUrl] = useState("");
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const { data, error } = useFetch(url);
   const formatData = [];
@@ -55,8 +58,26 @@ const PreviewMarkets = ({ uid, myStocks }) => {
     setSingleMarket(stock);
   };
 
+  const handleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+
+    document.querySelector(".markets").classList.toggle("markets__active");
+
+    document
+      .querySelector(".ShowSingleMarket")
+      .classList.toggle("singleMarket__active");
+  };
+
   return (
     <div className="PreviewMarkets">
+      <div className="mobile-menu__btn">
+        {!showMobileMenu && (
+          <img onClick={handleMobileMenu} src={menuSVG} alt="Mobile menu" />
+        )}
+        {showMobileMenu && (
+          <img onClick={handleMobileMenu} src={closeSVG} alt="Mobile menu" />
+        )}
+      </div>
       <ul className="markets">
         {error && <li>{error.message}</li>}
         {data &&

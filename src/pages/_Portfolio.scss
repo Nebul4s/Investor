@@ -6,11 +6,17 @@
     height: 100%;
     display: flex;
     gap: 2.4rem;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  .PreviewBriefcase {
+    width: 25%;
   }
   .graph-container {
     padding: 2.4rem;
-    height: 100%;
+    height: 93%;
     width: 75%;
+    overflow-x: hidden;
     .title {
       display: flex;
       justify-content: space-between;
@@ -40,9 +46,6 @@
   }
   .linegraph {
     overflow: hidden;
-  }
-  .PreviewBriefcase {
-    width: 25%;
   }
 }
 @media (max-width: 1500px) {
@@ -85,11 +88,13 @@
 }
 @media (max-width: 1030px) {
   .Portfolio {
+    .PreviewBriefcase {
+      width: 35%;
+    }
     .graph-container {
       width: 65% !important;
     }
     .PreviewBriefcase {
-      width: 35% !important;
       ul {
         .text {
           h2 {
@@ -101,6 +106,41 @@
           .stock-price {
             font-size: 1.8rem;
           }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .Portfolio {
+    .PreviewBriefcase {
+      width: fit-content;
+    }
+    .ShowPortfolio {
+      gap: 0.8rem;
+    }
+    .graph-container {
+      width: 100% !important;
+      display: block !important;
+    }
+
+    .graph__notActive {
+      width: 70%;
+    }
+
+    .PreviewBriefcase {
+      display: block;
+      .markets {
+        display: none;
+        width: 100%;
+      }
+      .markets__active {
+        display: block;
+      }
+
+      .mobile-menu__btn {
+        img {
+          display: block;
         }
       }
     }
@@ -149,6 +189,55 @@
           .stock-price {
             font-size: 1.4rem;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Portfolio {
+    .linegraph {
+      padding: 0;
+      padding-top: 2.4rem;
+    }
+    .lists {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .Portfolio {
+    .ShowPortfolio {
+      gap: 0.8rem;
+    }
+    .title {
+      flex-direction: column;
+    }
+    .graph-container {
+      padding: 0.8rem;
+      width: 100% !important;
+      display: block !important;
+    }
+
+    .graph__notActive {
+      display: none !important;
+    }
+
+    .PreviewBriefcase {
+      display: block;
+      .markets {
+        display: none;
+      }
+      .markets__active {
+        display: block;
+        width: 100vw !important;
+      }
+
+      .mobile-menu__btn {
+        img {
+          display: block;
         }
       }
     }

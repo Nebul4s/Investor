@@ -3,12 +3,47 @@
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  font-size: 62.5%;
-  font-family: "Open Sans", sans-serif;
-}
+
 body {
   font-size: 1.8rem;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+@media (max-width: 1920px) and (min-width: 500px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media (max-width: 7680px) and (min-width: 5000px) {
+  html {
+    font-size: 175% !important;
+  }
+}
+
+@media (max-width: 8000px) and (min-width: 3300px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+@media (max-width: 3300px) and (min-width: 2800px) {
+  html {
+    font-size: 115%;
+  }
+}
+@media (max-width: 2800px) and (min-width: 2500px) {
+  html {
+    font-size: 105%;
+  }
+}
+@media (max-width: 2500px) and (min-width: 2000px) {
+  html {
+    font-size: 95%;
+  }
 }
 
 @import "./App";

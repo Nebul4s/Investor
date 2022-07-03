@@ -12,7 +12,7 @@ service cloud.firestore {
     }
     match /users/{document=**} {
       //allow create if no document matches the uid
-      allow create: if request.auth.uid != resource.data.uid;
+      allow create;
 
       //allow other actions if document uid property matches the logged in user
       allow update: if request.auth.uid == resource.data.uid

@@ -51,7 +51,8 @@ const Portfolio = () => {
                 <li>
                   Percent change
                   <strong>
-                    {balance[0].portfolioHistory.length >= 2 &&
+                    {balance &&
+                      balance[0].portfolioHistory.length >= 2 &&
                       pChange.toFixed(2)}
                     %
                   </strong>
@@ -60,7 +61,8 @@ const Portfolio = () => {
                   Change
                   <strong>
                     $
-                    {balance[0].portfolioHistory.length >= 2 &&
+                    {balance &&
+                      balance[0].portfolioHistory.length >= 2 &&
                       change.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,

@@ -22,7 +22,7 @@ const Portfolio = () => {
     balance[0].portfolioHistory.at(-2).y;
   let currentValue = balance && balance[0].totalValue;
 
-  const change = lastValue - currentValue;
+  const change = currentValue - lastValue;
   const pChange = ((currentValue - lastValue) / lastValue) * 100;
 
   return (

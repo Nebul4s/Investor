@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /stocks/{document=**} {
+      // allow create for logged in users
+      allow create: if request.auth != null;
+
+      //allow other actions if document uid property matches the logged in user
+      allow delete: if request.auth.uid == resource.data.uid
+      allow update: if request.auth.uid == resource.data.uid
+      allow read: if request.auth.uid == resource.data.uid
+    }
+    match /users/{document=**} {
+      //allow create if no document matches the uid
+      allow create: if request.auth.uid != resource.data.uid;
+
+      //allow other actions if document uid property matches the logged in user
+      allow update: if request.auth.uid == resource.data.uid
+      allow delete: if request.auth.uid == resource.data.uid
+      allow read: if request.auth.uid == resource.data.uid
+    }
+  }
+}

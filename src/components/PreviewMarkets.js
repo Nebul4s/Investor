@@ -54,7 +54,7 @@ const PreviewMarkets = ({ uid, myStocks }) => {
     element.classList.add("active");
     setMarketElement(element);
     //
-
+    handleMobileMenu();
     setSingleMarket(stock);
   };
 

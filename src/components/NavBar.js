@@ -36,12 +36,20 @@ const NavBar = () => {
       </div>
       <div className="mobile__nav">
         <div className="mobileItems">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/portfolio">Portfolio</NavLink>
+          <NavLink to="/" onClick={handleMobileMenu}>
+            Home
+          </NavLink>
+          <NavLink to="/portfolio" onClick={handleMobileMenu}>
+            Portfolio
+          </NavLink>
           {!user && (
             <>
-              <NavLink to="/login">Login</NavLink>
-              <NavLink to="/signup">Signup</NavLink>
+              <NavLink to="/login" onClick={handleMobileMenu}>
+                Login
+              </NavLink>
+              <NavLink to="/signup" onClick={handleMobileMenu}>
+                Signup
+              </NavLink>
             </>
           )}
           {user && (

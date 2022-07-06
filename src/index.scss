@@ -11,6 +11,9 @@ body {
 html {
   font-family: "Open Sans", sans-serif;
 }
+#root {
+  height: 100vh;
+}
 
 @media (max-width: 1920px) and (min-width: 500px) {
   html {

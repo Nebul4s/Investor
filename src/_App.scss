@@ -1,5 +1,5 @@
 .App {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   color: white;
 
@@ -92,6 +92,32 @@
       img {
         display: none !important;
       }
+    }
+  }
+}
+@media (max-height: 680px) {
+  .App {
+    .NavBar {
+      height: 13%;
+    }
+    .container {
+      height: 87%;
+    }
+    .Portfolio {
+      height: 87%;
+    }
+  }
+}
+@media (max-height: 550px) {
+  .App {
+    .NavBar {
+      height: 15%;
+    }
+    .container {
+      height: 85%;
+    }
+    .Portfolio {
+      height: 85%;
     }
   }
 }
